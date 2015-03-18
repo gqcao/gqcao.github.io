@@ -18,13 +18,6 @@
 <msg name="october">October</msg>
 <msg name="november">November</msg>
 <msg name="december">December</msg>
-<msg name="year_2008">2008</msg>
-<msg name="year_2009">2009</msg>
-<msg name="year_2010">2010</msg>
-<msg name="year_2011">2011</msg>
-<msg name="year_2012">2012</msg>
-<msg name="year_2013">2013</msg>
-<msg name="year_2014">2014</msg>
 <msg name="year_2015">2015</msg>
 <msg name="year_2016">2016</msg>
 <msg name="year_2017">2017</msg>
@@ -34,6 +27,8 @@
 <msg name="year_2021">2021</msg>
 <msg name="year_2022">2022</msg>
 <msg name="year_2023">2023</msg>
+<msg name="year_2008">2024</msg>
+<msg name="year_2008">2025</msg>
 <msg name="hours">hours</msg>
 <msg name="minutes">minutes</msg>
 <msg name="seconds">seconds</msg>
