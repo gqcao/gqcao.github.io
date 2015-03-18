@@ -1,4 +1,6 @@
-<!--This gadget is adapted from the original design by Caleb Eggensperger. It is now for the use in my google site. -->
+<!--
+     This gadget is adapted from the original design by Caleb Eggensperger. It is now for the use in my google site. 
+     -->
 <?xml version="1.0" encoding="UTF-8"?>
 <Module>
 <ModulePrefs title="__MSG_countdown__ " description="__MSG_description__" screenshot="http://www.google.com/ig/modules/countdown_content/countdown_screenshot.png" thumbnail="http://www.google.com/ig/modules/countdown_content/countdown_thumbnail.png" singleton="false" height="80">
