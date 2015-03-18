@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Module>
+<ModulePrefs title="__MSG_countdown__ " description="__MSG_description__" author="Caleb Eggensperger" title_url="http://www.calebegg.com/countdown/" screenshot="http://www.google.com/ig/modules/countdown_content/countdown_screenshot.png" thumbnail="http://www.google.com/ig/modules/countdown_content/countdown_thumbnail.png" singleton="false" author_email="calebegg@gmail.com" author_quote="I was born not knowing and have had only a little time to change that here and there. --Richard Feynman" author_link="http://www.calebegg.com/" author_aboutme="I'm a second year computer science major at the University of Oklahoma." author_photo="http://www.calebegg.com/me.jpg" height="80">
+  <Require feature="views"/>
+  <Require feature="com.google.gadgets.analytics"/>
+    <Locale messages="https://googledrive.com/host/0B-v-T3GxgcA0fnU3R0JOWDBtWnQtb3M5eXFTUlpnRk5NU0xFcER0RWFTc28tRXp2V2RwY0U/cd_msg_en.xml"/>
+</ModulePrefs>
+<UserPref name="eve" display_name="__MSG_event__" required="true"/>
+<UserPref name="mon" display_name="__MSG_month__" required="true" datatype="enum">
+<EnumValue value="1" display_value="__MSG_january__"/>
+<EnumValue value="2" display_value="__MSG_february__"/>
+<EnumValue value="3" display_value="__MSG_march__"/>
+<EnumValue value="4" display_value="__MSG_april__"/>
+<EnumValue value="5" display_value="__MSG_may_full__"/>
+<EnumValue value="6" display_value="__MSG_june__"/>
+<EnumValue value="7" display_value="__MSG_july__"/>
+<EnumValue value="8" display_value="__MSG_august__"/>
+<EnumValue value="9" display_value="__MSG_september__"/>
+<EnumValue value="10" display_value="__MSG_october__"/>
+<EnumValue value="11" display_value="__MSG_november__"/>
+<EnumValue value="12" display_value="__MSG_december__"/>
+</UserPref>
+<UserPref name="dat" display_name="__MSG_date__" required="true"/>
+<UserPref name="yer" display_name="__MSG_year__" required="true" datatype="enum">
+<EnumValue value="2008" display_value="__MSG_year_2008__"/>
+<EnumValue value="2009" display_value="__MSG_year_2009__"/>
+<EnumValue value="2010" display_value="__MSG_year_2010__"/>
+<EnumValue value="2011" display_value="__MSG_year_2011__"/>
+<EnumValue value="2012" display_value="__MSG_year_2012__"/>
+<EnumValue value="2013" display_value="__MSG_year_2013__"/>
+<EnumValue value="2014" display_value="__MSG_year_2014__"/>
+<EnumValue value="2015" display_value="__MSG_year_2015__"/>
+<EnumValue value="2016" display_value="__MSG_year_2016__"/>
+<EnumValue value="2017" display_value="__MSG_year_2017__"/>
+<EnumValue value="2018" display_value="__MSG_year_2018__"/>
+<EnumValue value="2019" display_value="__MSG_year_2019__"/>
+<EnumValue value="2020" display_value="__MSG_year_2020__"/>
+<EnumValue value="2021" display_value="__MSG_year_2021__"/>
+<EnumValue value="2022" display_value="__MSG_year_2022__"/>
+<EnumValue value="2023" display_value="__MSG_year_2023__"/>
+</UserPref>
+<Content type="html" view="home,canvas">
+<![CDATA[
+<!-- -->
+<style type=text/css>
+#all{
+  font-family:arial,sans-serif;
+  text-align:center;
+  margin-top:6px;
+}
+#countdown_table{
+  font-family:arial,sans-serif;
+  font-size:smaller;
+  text-align:center;
+}
+#hoursTd{
+  font-size:smaller;
+color:#676767;
+}
+.days,.times{
+  font-size:30pt;
+  color:#3366cc;
+  background-color:#e5ecf9;
+  text-align:center;
+  border-style:solid;
+  border-width:2px;
+  border-color:#3366cc;
+  padding-left:2px;
+  padding-right:2px;
+}
+</style>
+<div id=all></div>
+  <script>
+prefs=new _IG_Prefs(164)
+  fevent=prefs.getString("eve")
+  if (prefs.getString("mon").length>2) {
+    alert("Month must be entered as a number, not as a word. 1 for January, 2 for February, etc")
+  }
+emonth=eval(prefs.getString("mon"))
+edate=eval(prefs.getString("dat"))
+  eyear=eval(prefs.getString("yer"))
+totalDaysAtMonth=new Array(0,31,59,90,120,151,181,212,243,273,304,334)
+  edayspastnew=totalDaysAtMonth[emonth-1]+edate
+  function getFirstMsgHalf(id) {
+    var msg = prefs.getMsg(id);
+    var i = msg.indexOf("%1$s");
+    msg = msg.slice(0, i);
+    return msg.replace(/\%2\$d/, "<b>" +
+        prefs.getString("eve") + "</b>");
+  }
+function getSecondMsgHalf(id) {
+  var msg = prefs.getMsg(id);
+  var i = msg.indexOf("%1$s");
+  msg = msg.slice(i + 4, msg.length);
+  msg = msg.replace(/saecula/, "<a href=\"http://en.wikipedia.org/wiki/Saeculum\" target=\"_blank\">saecula</a>");
+  msg = msg.replace(/saeculum/, "<a href=\"http://en.wikipedia.org/wiki/Saeculum\" target=\"_blank\">saeculum</a>");
+  return msg.replace(/\%2\$d/, "<b>" +
+      prefs.getString("eve") + "</b>");
+}
+  function getDaysTill() {
+    return (eyear - today.getFullYear()) * 365 + (edayspastnew - daysPastNewYear)
+  }
+function clean(num) {
+  str = num.toString();
+  if (str.length!=2) {
+    str="0"+str;
+  }
+  return str;
+}
+function updateTimer() {
+  today=new Date();
+  happened=false;
+  daysPastNewYear=totalDaysAtMonth[today.getMonth()]+today.getDate();
+  daysTill=getDaysTill();
+  if (daysTill<=0) {
+    happened=true;
+  }
+  secondsTill = (60-today.getSeconds());
+  minutesTill = (60-today.getMinutes());
+  hoursTill = (-today.getHours()+daysTill*24-1);
+  todayyear=today.getFullYear();
+  for (i=todayyear;i<=eyear;i++) {
+    if (!((i==todayyear && today.getMonth() > 1) || (i==eyear && emonth <= 1))) {
+      if (i%4==0) daysTill++;
+      if (i%100==0) daysTill--;
+      if (i%400==0) daysTill++;
+    }
+  }
+  if(happened==true){
+    daysTill = 0;
+    hoursTill = 0;
+    minutesTill = 0;
+    secondsTill = 0;
+  }
+  return new Array(secondsTill, minutesTill, hoursTill , daysTill);
+}
+millisIndex = -1;
+function pickUnits() {
+  nums = new Array();
+  for (var i = 0; i < units.length; i++)
+    nums[i] = i;
+  chosenUnits = new Array();
+  for (var i = 0; i < 5; i++) {
+    var index = nums[Math.floor(Math.random()*(nums.length - i))];
+    chosenUnits[i] = units[index];
+    nums[array_find(nums, index)] = nums[nums.length - i - 1];
+  }
+  initializeProfileView();
+  _gel('all').innerHTML += "<hr>";
+  for (var i = 0; i < chosenUnits.length; i++) {
+    _gel('all').innerHTML += '<table width=100% id=countdown_table><tr><td id=1st_half_' + i + ' align=right width=50%> ' + getFirstMsgHalf(chosenUnits[i][0] + 's_until') + ' </td><td class=times id=time_' + i + '></td><td id=2nd_half_' + i + ' width=50% align=left> '+ getSecondMsgHalf(chosenUnits[i][0] + 's_until') + '</td></tr></table><br />';
+  }
+  _gel('all').innerHTML += '<button onclick="pickUnits();">More fun facts</button>';
+  return chosenUnits;
+}
+function initializeProfileView() {
+  _gel('all').innerHTML = '<table width=100% id=countdown_table><tr><td id=1st_half align=right width=50%>' + getFirstMsgHalf("days_until") + '</td><td class=days id=days></td><td id=2nd_half width=50% align=left> ' + getSecondMsgHalf("days_until") + '</td></tr><tr><td id=hoursTd colspan=3>(<span id=hours></span> __MSG_hours__ : <span id=minutes></span> __MSG_minutes__ : <span id=seconds></span> __MSG_seconds__)</td></tr></table>';
+}
+function array_find(arr, elem) {
+  for (var i = 0; i < arr.length; i++) {
+    if (elem == arr[i]) {
+      return i
+    }
+  }
+  return -1;
+}
+n = -1;
+units = new Array();
+units[0] = new Array('day', 0.000011574074074, 0);
+units[1] = new Array('meal', 0.000034722222222, 0);
+units[2] = new Array('fortnight', 0.000000826719577, 1);
+units[3] = new Array('saeculum', 0.000000000352331, 5);
+units[4] = new Array('millisecond', 1000, 0);
+units[5] = new Array('second', 1, 0);
+units[6] = new Array('breath', 0.2, 0);
+units[7] = new Array('heartbeat', 1.166666666666667, 0);
+units[8] = new Array('birth', 0.136377314814815, 0);
+units[9] = new Array('fingernail', 0.000001157407407, 2);
+units[10] = new Array('hair', 0.000003858024691, 2);
+units[11] = new Array('mississippi', 3.366, 0);
+units[12] = new Array('stock', 14, 0);
+units[13] = new Array('carbon', 0.0784129874, 0);
+units[14] = new Array('blood', 2, 0);
+units[15] = new Array('mercury_day', 0.000000265179118, 1);
+units[16] = new Array('venus_day', 0.000000047626309, 3);
+units[17] = new Array('mars_day', 0.000011281249501, 0);
+units[18] = new Array('jupiter_day', 0.000027989800517, 0);
+units[19] = new Array('saturn_day', 0.000026067196227, 0);
+units[20] = new Array('uranus_day', 0.000016112400103, 0);
+units[21] = new Array('neptune_day', 0.000017242568453, 0);
+units[22] = new Array('pluto_day', 0.00000181210632, 1);
+units[23] = new Array('sun_day', 0.000000456031377, 2);
+units[24] = new Array('mercury_year', 0.000000132124133, 2);
+units[25] = new Array('venus_year', 0.000000051144826, 3);
+units[26] = new Array('mars_year', 0.000000016866911, 3);
+units[27] = new Array('jupiter_year', 0.000000002673676, 4);
+units[28] = new Array('saturn_year', 0.000000001076368, 4);
+units[29] = new Array('uranus_year', 0.000000000377453, 5);
+units[30] = new Array('neptune_year', 0.000000000192414, 5);
+units[31] = new Array('pluto_year', 0.000000000127816, 5);
+function updateCanvas() {
+  times = updateTimer();
+  till = times[0] + 60 * times[1] + 60 * 60 * times[2] + (1000-today.getMilliseconds())/1000;
+  n++;
+  for (var i = 0; i < 5; i++) {
+    unit = chosenUnits[i];
+    if (unit[0] == 'day') {
+      timeTill = times[3];
+    } else {
+      timeTill = Math.ceil(till * unit[1] * Math.pow(10, unit[2])) /
+        Math.pow(10, unit[2]);
+    }
+    if (till <= 1) {
+      timeTill = 0;
+    }
+    if (_gel('time_'+i).innerHTML != timeTill.toString()) {
+      _gel('time_'+i).innerHTML = timeTill;
+    }
+    if (n % 100 == 0) {
+      msg_id = unit[0] + "s_until";
+      if (timeTill == 1){
+        msg_id = unit[0] + "_until";
+      }
+      _gel("1st_half_" + i).innerHTML = getFirstMsgHalf(msg_id);
+      _gel("2nd_half_" + i).innerHTML = getSecondMsgHalf(msg_id);
+    }
+  }
+  n %= 100;
+  _gel("days").style.fontSize = "50pt";
+  updateHome();
+}
+function updateHome() {
+  times = updateTimer();
+  _gel("seconds").innerHTML = clean(times[0]);
+  _gel("minutes").innerHTML = clean(times[1]);
+  _gel("hours").innerHTML = times[2];
+  _gel("days").innerHTML = times[3];
+  var msg_id = "days_until";
+  if (daysTill == 1){
+    msg_id = "day_until";
+  }
+  _gel("1st_half").innerHTML = getFirstMsgHalf(msg_id);
+  _gel("2nd_half").innerHTML = getSecondMsgHalf(msg_id);
+}
+currview = gadgets.views.getCurrentView('__MODULE_ID__');
+if (currview && currview.getName() == "canvas") {
+  _gel('all').style.fontSize = "xx-large";
+  chosenUnits = pickUnits();
+  update = updateCanvas;
+} else {
+  initializeProfileView();
+  update = updateHome;
+}
+update();
+setInterval('update()', 133);
+
+if (typeof _IG_GA == 'function') {
+  var ga = new _IG_GA("UA-315420-1");
+  ga.reportPageview('/countdown.xml');
+}
+</script>
+]]>
+</Content>
+</Module>
