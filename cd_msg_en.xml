@@ -1,3 +1,4 @@
+<!--This gadget is adapted from the original design by Caleb Eggensperger. It is now for the use in my google site. -->
 <?xml version="1.0" encoding="UTF-8"?>
 <messagebundle><msg name="countdown">Countdown</msg>
 <msg name="description">Counts down to a user specified date</msg>
