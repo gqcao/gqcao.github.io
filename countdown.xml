@@ -1,9 +1,6 @@
-<!--
-     This gadget is adapted from the original design by Caleb Eggensperger. It is now for the use in my google site. 
-     -->
 <?xml version="1.0" encoding="UTF-8"?>
 <Module>
-<ModulePrefs title="__MSG_countdown__ " description="__MSG_description__" screenshot="http://www.google.com/ig/modules/countdown_content/countdown_screenshot.png" thumbnail="http://www.google.com/ig/modules/countdown_content/countdown_thumbnail.png" singleton="false" height="80">
+<ModulePrefs title="__MSG_countdown__ " description="__MSG_description__" screenshot="http://www.google.com/ig/modules/countdown_content/countdown_screenshot.png" thumbnail="http://www.google.com/ig/modules/countdown_content/countdown_thumbnail.png" author_description="This gadget is adapted from the original design by Caleb Eggensperger. It is now for the use in my google site." singleton="false" height="80">
   <Require feature="views"/>
   <Require feature="com.google.gadgets.analytics"/>
     <Locale messages="http://cgq5.github.io/cd_msg_en.xml"/>
