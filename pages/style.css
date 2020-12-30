@@ -1,0 +1,14 @@
+BODY, H1, H2, H3, H4, P, UL, OL, DL, LI, DT, DD, TH, TD, 
+I, B, EM, STRONG
+{ 
+    font-family: sans-serif; 
+    color: black;
+    background: #FFE7B7;
+    max-width: 1500px;
+    margin-left: auto;
+    margin-right: auto;
+}
+A:link { color: #0000FF; }        /* new link, blue */
+A:visited { color: #CC00CC; }     /* visited link, violet */
+A:hover { color: #CC9900; }       /* hover, gold */
+A:active { color: #FF0000; }      /* active, red */
