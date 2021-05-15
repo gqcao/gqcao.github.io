@@ -26,3 +26,6 @@ A:active { color: #FF0000; }      /* active, red */
     word-break: break-all;
     white-space: normal;
 }
+/** For Blog Posts */
+.post-header { margin-bottom: 30px; }
+.post-title { font-size: 40px; }
