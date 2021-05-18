@@ -47,6 +47,7 @@ https://www.deeplearning.ai/the-batch/
 Courses
 https://developers.google.com/machine-learning
 https://www.coursera.org/professional-certificates/gcp-data-engineering
+https://www.coursera.org/specializations/machine-learning-engineering-for-production-mlops
 
 Interview Preparation
 https://www.youtube.com/c/LifeatGoogle/
@@ -54,3 +55,10 @@ https://www.hackerrank.com/
 https://www.topcoder.com/
 https://leetcode.com/
 https://adventofcode.com/
+https://github.com/jhuangtw/xg2xg
+https://github.com/GoogleCloudPlatform/training-data-analyst
+https://github.com/donnemartin/system-design-primer
+http://courses.csail.mit.edu/iap/interview/materials.php
+
+Tools
+https://github.com/jhuangtw/xg2xg
