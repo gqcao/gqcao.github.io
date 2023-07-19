@@ -1,7 +1,7 @@
 var size = 0;
 var placement = 'point';
 
-var style_nl_motorway_1 = function(feature, resolution){
+var style_no_motorway_2 = function(feature, resolution){
     var context = {
         feature: feature,
         variables: {}
