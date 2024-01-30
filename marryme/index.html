@@ -1,0 +1,37 @@
+﻿<!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+    <meta charset="UTF-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marry Me</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+        }
+        .a4-container {
+            width: 794px; /* A4 width in pixels at 96 DPI */
+            height: 1123px; /* A4 height in pixels at 96 DPI */
+            overflow: hidden;
+            border: 1px solid #d3d3d3; /* Optional: adds a border around the A4 size */
+            background-color: white;
+        }
+        .a4-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* This will cover the entire area, potentially cropping the image */
+        }
+    </style>
+</head>
+<body>
+    <div class="a4-container">
+        <!-- Replace 'your-image.jpg' with your image file -->
+        <img src="proposal.jpg" alt="A4 Image">
+    </div>
+</body>
+</html>
