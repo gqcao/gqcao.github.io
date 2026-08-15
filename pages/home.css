@@ -1,0 +1,243 @@
+/* Guanqun Cao — homepage theme */
+:root {
+  --bg: #FAF7F2;            /* warm off-white */
+  --ink: #3D362E;           /* warm near-black */
+  --muted: #8B7E6E;         /* warm gray-brown */
+  --accent: #B85C38;        /* terracotta */
+  --accent-dark: #9C4A2B;
+  --soft: #F3EBDE;          /* soft card background */
+  --card: #FFFDF8;
+  --border: #E8DECF;
+  --good: #5E7F5A;          /* muted green for the demo link */
+  --ring: rgba(184, 92, 56, 0.16);
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: "Segoe UI", system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+  font-size: 17px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+main {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 56px 28px 40px;
+}
+
+/* ---------- header ---------- */
+
+.hero {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 36px;
+  align-items: center;
+}
+
+.intro h1 {
+  margin: 0 0 6px;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 44px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  color: var(--ink);
+}
+
+.role {
+  margin: 0;
+  color: var(--muted);
+  font-size: 16.5px;
+}
+
+/* contact icons */
+
+.contact {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 22px;
+}
+
+.contact a {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--card);
+  color: var(--ink);
+  text-decoration: none;
+  font-size: 15px;
+  transition: transform 0.15s ease, border-color 0.15s ease, color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.contact a svg {
+  flex: none;
+}
+
+.contact a:hover {
+  transform: translateY(-2px);
+  border-color: var(--accent);
+  color: var(--accent-dark);
+  box-shadow: 0 6px 16px var(--ring);
+}
+
+/* portrait */
+
+.portrait {
+  width: 210px;
+  height: 210px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 5px solid var(--card);
+  outline: 1px solid var(--border);
+  box-shadow: 0 12px 30px rgba(150, 118, 88, 0.18);
+}
+
+/* ---------- bio ---------- */
+
+.bio {
+  margin-top: 40px;
+  max-width: 64ch;
+}
+
+.bio p {
+  margin: 0 0 14px;
+}
+
+/* ---------- what's new ---------- */
+
+.news {
+  margin-top: 34px;
+  padding: 26px 28px;
+  background: var(--soft);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+}
+
+.news-head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.news-head h2 {
+  margin: 0;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 22px;
+  font-weight: 600;
+}
+
+.badge {
+  background: var(--accent);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  padding: 3px 10px;
+  border-radius: 999px;
+}
+
+.cite {
+  margin: 0;
+}
+
+.cite .title {
+  font-weight: 700;
+}
+
+.cite .authors {
+  color: var(--muted);
+  font-size: 15.5px;
+}
+
+.news-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 18px;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 20px;
+  border-radius: 999px;
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 600;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px var(--ring);
+}
+
+.btn-paper {
+  background: var(--accent);
+  color: #fff;
+}
+
+.btn-paper:hover { background: var(--accent-dark); }
+
+.btn-demo {
+  background: var(--card);
+  color: var(--good);
+  border: 1.5px solid var(--good);
+}
+
+.btn-demo:hover { background: var(--good); color: #fff; }
+
+.btn svg { flex: none; }
+
+/* ---------- footer ---------- */
+
+footer {
+  margin-top: 56px;
+  padding: 22px 16px 34px;
+  border-top: 1px solid var(--border);
+  text-align: center;
+  color: var(--muted);
+  font-size: 14.5px;
+}
+
+footer nav a {
+  color: var(--muted);
+  text-decoration: none;
+  margin: 0 6px;
+}
+
+footer nav a:hover { color: var(--accent-dark); }
+
+footer p { margin: 0 0 8px; }
+
+/* ---------- responsive ---------- */
+
+@media (max-width: 720px) {
+  main { padding-top: 36px; }
+
+  .hero { grid-template-columns: 1fr; gap: 24px; text-align: center; }
+
+  .portrait {
+    order: -1;
+    width: 180px;
+    height: 180px;
+    margin: 0 auto;
+  }
+
+  .contact { justify-content: center; }
+
+  .cite .authors { font-size: 15px; }
+}
